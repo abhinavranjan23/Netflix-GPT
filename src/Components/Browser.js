@@ -1,7 +1,12 @@
 import React from "react";
+import Navbar from "./Navbar";
 
 const Browser = () => {
-  return <div>Browser</div>;
+  return (
+    <div>
+      <Navbar />
+    </div>
+  );
 };
 
 export default Browser;

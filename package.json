@@ -26,6 +26,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
     "firebase": "^11.1.0",
+    "flowbite": "^2.5.2",
     "formik": "^2.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
