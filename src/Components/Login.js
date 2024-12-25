@@ -1,20 +1,37 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 import Header from "./Header";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const navigate = useNavigate();
   const [isSignIn, setIsSignIn] = useState(true);
+  const [authError, setAuthError] = useState("");
   const handleSignUp = () => {
     setIsSignIn(!isSignIn);
+    setAuthError("");
   };
+  // console.log("isSignIn state:", isSignIn);
+
   const formik = useFormik({
     initialValues: {
       email: "",
+      name: "",
       password: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().email("Invalid email address").required("Required"),
-      name: Yup.string().required("Required"),
+      email: Yup.string()
+        .matches(/^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/i, "Invalid email Format")
+        .required("Required"),
+      name: isSignIn
+        ? Yup.string().notRequired()
+        : Yup.string().required("Required"),
       password: Yup.string()
         .min(8, "Password must be 8 characters long")
         .matches(/[0-9]/, "Password requires a number")
@@ -24,10 +41,41 @@ const Login = () => {
         .required("Required"),
     }),
     onSubmit: (values, { setSubmitting }) => {
-      setTimeout(() => {
-        alert("Login Successfull");
-        setSubmitting(false);
-      }, 3000);
+      if (!isSignIn) {
+        //signup
+        console.log("signup logic");
+        createUserWithEmailAndPassword(auth, values.email, values.password)
+          .then((userCredential) => {
+            // Signed up
+            const user = userCredential.user;
+            console.log(user);
+            alert("signup sucessfull");
+            setAuthError("");
+            navigate("/broser");
+
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code.split("auth/")[1];
+            setAuthError(errorCode);
+
+            // ..
+          });
+      } else {
+        signInWithEmailAndPassword(auth, values.email, values.password)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            setAuthError("");
+            navigate("/broser");
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code.split("auth/")[1];
+            setAuthError(errorCode);
+          });
+      }
+      setSubmitting(false);
     },
   });
   return (
@@ -56,25 +104,33 @@ https://assets.nflxext.com/ffe/siteui/vlv3/150c4b42-11f6-4576-a00f-c631308b1e43/
               {isSignIn ? (
                 ""
               ) : (
-                <input
-                  className={`h-14 rounded-md border bg-zinc-900 bg-opacity-60 pl-5 w-[290px] text-white mb-4 ${
-                    formik.touched.email && formik.errors.email
-                      ? "border-red-600"
-                      : ""
-                  } `}
-                  id='name'
-                  name='name'
-                  type='name'
-                  placeholder='Full Name'
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.name}
-                />
+                <div>
+                  <input
+                    className={`h-14 rounded-md border bg-zinc-900 bg-opacity-60 pl-5 w-[290px] text-white mb-4 ${
+                      formik.touched.name && formik.errors.name
+                        ? "border-red-600"
+                        : ""
+                    } `}
+                    id='name'
+                    name='name'
+                    type='name'
+                    placeholder='Full Name'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.name}
+                  />
+                  {formik.touched.name && formik.errors.name ? (
+                    <div className='text-red-600 text-sm'>
+                      {formik.errors.email}
+                    </div>
+                  ) : null}
+                </div>
               )}
+
               <input
                 className={`h-14 rounded-md border bg-zinc-900 bg-opacity-60 pl-5 w-[290px] text-white ${
-                  formik.touched.name && formik.errors.name
-                    ? "border-red-600"
+                  formik.touched.email && formik.errors.email
+                    ? "border-red-600 "
                     : ""
                 } `}
                 id='email'
@@ -93,7 +149,7 @@ https://assets.nflxext.com/ffe/siteui/vlv3/150c4b42-11f6-4576-a00f-c631308b1e43/
 
               <input
                 className={`h-14 rounded-md border bg-zinc-900 bg-opacity-60 pl-5 mt-4 w-[290px] text-white  ${
-                  formik.touched.email && formik.errors.email
+                  formik.touched.password && formik.errors.password
                     ? "border-red-600"
                     : ""
                 }`}
@@ -109,6 +165,9 @@ https://assets.nflxext.com/ffe/siteui/vlv3/150c4b42-11f6-4576-a00f-c631308b1e43/
                 <div className='text-red-600 text-sm'>
                   {formik.errors.password}
                 </div>
+              ) : null}
+              {authError ? (
+                <div className='text-red-600 text-sm'>{authError}</div>
               ) : null}
 
               <button
