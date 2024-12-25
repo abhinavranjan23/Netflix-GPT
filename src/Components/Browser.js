@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Header from "./Header";
 
 const Browser = () => {
   return (
     <div>
-      <Navbar />
+      <Header />
     </div>
   );
 };

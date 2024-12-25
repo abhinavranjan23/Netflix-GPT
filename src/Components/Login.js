@@ -5,11 +5,16 @@ import * as Yup from "yup";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isSignIn, setIsSignIn] = useState(true);
   const [authError, setAuthError] = useState("");
@@ -32,13 +37,15 @@ const Login = () => {
       name: isSignIn
         ? Yup.string().notRequired()
         : Yup.string().required("Required"),
-      password: Yup.string()
-        .min(8, "Password must be 8 characters long")
-        .matches(/[0-9]/, "Password requires a number")
-        .matches(/[a-z]/, "Password requires a lowercase letter")
-        .matches(/[A-Z]/, "Password requires an uppercase letter")
-        .matches(/[^\w]/, "Password requires a symbol")
-        .required("Required"),
+      password: isSignIn
+        ? Yup.string().required("Password Required")
+        : Yup.string()
+            .min(8, "Password must be 8 characters long")
+            .matches(/[0-9]/, "Password requires a number")
+            .matches(/[a-z]/, "Password requires a lowercase letter")
+            .matches(/[A-Z]/, "Password requires an uppercase letter")
+            .matches(/[^\w]/, "Password requires a symbol")
+            .required("Required"),
     }),
     onSubmit: (values, { setSubmitting }) => {
       if (!isSignIn) {
@@ -48,10 +55,31 @@ const Login = () => {
           .then((userCredential) => {
             // Signed up
             const user = userCredential.user;
-            console.log(user);
-            alert("signup sucessfull");
-            setAuthError("");
-            navigate("/broser");
+            updateProfile(user, {
+              displayName: values.name,
+              photoURL: "https://avatars.githubusercontent.com/u/152771807?v=4",
+            })
+              .then(() => {
+                // Profile updated!
+                const { uid, email, displayName, photoURL } = auth.currentUser;
+                dispatch(
+                  addUser({
+                    uid: uid,
+                    email: email,
+                    displayName: displayName,
+                    photoURL: photoURL,
+                  })
+                );
+                setAuthError("");
+                navigate("/broser");
+
+                // ...
+              })
+              .catch((error) => {
+                // An error occurred
+                setAuthError(error.message);
+                // ...
+              });
 
             // ...
           })
@@ -114,7 +142,7 @@ https://assets.nflxext.com/ffe/siteui/vlv3/150c4b42-11f6-4576-a00f-c631308b1e43/
                     id='name'
                     name='name'
                     type='name'
-                    placeholder='Full Name'
+                    placeholder='Enter Your Full Name'
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.name}
