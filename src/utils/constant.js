@@ -11,3 +11,16 @@ export const API_OPTIONS = {
 };
 export const NOWPLAYING_API =
   "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
+
+export const POSTER_PATH = "https://image.tmdb.org/t/p/original/";
+
+export const POPULAR_API =
+  "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
+export const TOP_RATED_API =
+  "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
+export const TRENDING_MOVIE_API =
+  "https://api.themoviedb.org/3/trending/movie/day?language=en-US";
+export const UPCOMING_API =
+  "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
+export const POPULAR_TVSHOW_API =
+  "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1";

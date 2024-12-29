@@ -19,5 +19,5 @@ export const useTrailer = (id) => {
   };
   useEffect(() => {
     getVideoBg();
-  }, []);
+  }, [id]);
 };

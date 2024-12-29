@@ -1,13 +1,14 @@
 import React from "react";
 import Header from "./Header";
 import FirstConatiner from "./FirstContainer";
-import { useNowPlaying } from "../utils/useNowPlaying";
+import SecondConatiner from "./SecondConatiner";
+
 const Browser = () => {
-  // useNowPlaying();
   return (
-    <div>
+    <div className=''>
       <Header />
       <FirstConatiner />
+      <SecondConatiner />
     </div>
   );
 };
