@@ -1,6 +1,7 @@
 import React from "react";
 import useFormHandle from "../utils/useformhandle";
 import Header from "./Header";
+import { BACKGROUNDIMAGE } from "../utils/constant";
 
 const Login = () => {
   const { formik, isSignIn, authError, handleSignUp } = useFormHandle();
@@ -8,11 +9,7 @@ const Login = () => {
     <div>
       <Header />
       <div className='absolute'>
-        <img
-          src='
-https://assets.nflxext.com/ffe/siteui/vlv3/150c4b42-11f6-4576-a00f-c631308b1e43/web/IN-en-20241216-TRIFECTA-perspective_915a9055-68ad-4e81-b19a-442f1cd134dc_medium.jpg'
-          alt='bg-img'
-        ></img>
+        <img src={BACKGROUNDIMAGE} alt='bg-img'></img>
       </div>
       <div className='relative flex justify-center items-center '>
         <div

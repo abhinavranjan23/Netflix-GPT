@@ -25,7 +25,6 @@ const FirstContainer = () => {
     return <div></div>;
   }
 
-  // Example data extraction
   const { original_title, overview, id } = nowPlayingData[3];
 
   return (
