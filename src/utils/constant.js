@@ -25,3 +25,11 @@ export const UPCOMING_API =
   "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
 export const POPULAR_TVSHOW_API =
   "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1";
+export const SUPPORTED_LANGUAGE = [
+  { abbreviation: "en", name: "English" },
+  { abbreviation: "es", name: "Español " },
+  { abbreviation: "fr", name: "Français" },
+  { abbreviation: "de", name: "Deutsch " },
+  { abbreviation: "zh", name: "中文 " },
+  { abbreviation: "hi", name: "हिंदी " },
+];
