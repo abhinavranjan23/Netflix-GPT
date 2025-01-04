@@ -20,20 +20,20 @@ const Section = ({ title, data }) => {
           ))}
         </div>
       </div>
-      {/* Left Button */}
-      <button
+
+      {/* <button
         onClick={() => scrollContainer(containerRef, -1)}
         className='absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 hover:bg-opacity-60 rounded-full p-1 w-8 h-8 flex items-center justify-center'
       >
         ←
       </button>
-      {/* Right Button */}
+      
       <button
         onClick={() => scrollContainer(containerRef, 1)}
         className='absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 hover:bg-opacity-60 rounded-full p-1 w-8 h-8 flex items-center justify-center'
       >
         →
-      </button>
+      </button> */}
     </div>
   );
 };
