@@ -27,7 +27,7 @@ const FirstContainer = () => {
 
       {/* Now Playing Section */}
       <div
-        className='flex flex-col pl-7 sm:pl-14 absolute bottom-0 left-0 right-0 gap-y-3 bg-gradient-to-t from-black pb-1'
+        className='flex flex-col pl-2 sm:pl-14 absolute bottom-0 left-0 right-0 gap-y-3 bg-gradient-to-t from-black pb-1'
         style={{ height: "180px", width: "100%" }}
       >
         <h2 className='text-white font-semibold text-lg'>Now Playing</h2>

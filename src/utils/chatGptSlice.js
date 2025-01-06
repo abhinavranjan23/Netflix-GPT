@@ -16,7 +16,12 @@ const chatGptSlice = createSlice({
       state.moviename = moviename;
       state.gptMovieresult = movieresult;
     },
+    removeGptMovieResult: (state) => {
+      state.moviename = null;
+      state.gptMovieresult = null;
+    },
   },
 });
-export const { updateGpt, updateGptMovieResult } = chatGptSlice.actions;
+export const { updateGpt, updateGptMovieResult, removeGptMovieResult } =
+  chatGptSlice.actions;
 export default chatGptSlice.reducer;

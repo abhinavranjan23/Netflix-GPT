@@ -9,7 +9,7 @@ const GptSuggestion = () => {
     <div className='flex items-center justify-center min-h-screen'>
       <div className='bg-black w-[95vw] px-7  sm:px-14  mt-10 opacity-90 rounded-md '>
         {moviename.map((moviename, index) => (
-          <Section title={moviename} data={gptMovieresult[index]} />
+          <Section title={moviename} data={gptMovieresult[index]} key={index} />
         ))}
       </div>
     </div>

@@ -4,7 +4,7 @@ import playImage from "../assets/play.png";
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className=' pt-20 sm:pt-56  px-8 sm:px-14 sm:w-[45vw] absolute bg-gradient-to-r from-black h-full '>
+    <div className=' pt-20 sm:pt-56  px-2 sm:px-14 sm:w-[45vw] absolute bg-gradient-to-r from-black h-full '>
       <h1 className='font-extrabold   sm:text-6xl  text-white'>{title}</h1>
       <div className='w-[30vw] h-10 overflow-hidden sm:h-auto sm:w-[45vw]'>
         <p className='pt-3 sm:pt-4  text-white'>{overview}</p>

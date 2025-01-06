@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO, SUPPORTED_LANGUAGE } from "../utils/constant";
-import { updateGpt } from "../utils/chatGptSlice";
+import { removeGptMovieResult, updateGpt } from "../utils/chatGptSlice";
 import { updateLangage } from "../utils/langSlice";
 
 const Header = () => {
@@ -15,6 +15,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const dispatch1 = useDispatch();
   const dispatch2 = useDispatch();
+  const dispatch3 = useDispatch();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const isChatgpt = useSelector((store) => store.chatgpt.value);
@@ -72,6 +73,11 @@ const Header = () => {
     dispatch2(updateLangage(e.target.value));
     console.log(e.target.value);
   };
+  useEffect(() => {
+    if (!isChatgpt) {
+      dispatch3(removeGptMovieResult());
+    }
+  }, [isChatgpt, dispatch3]);
 
   return (
     <div
@@ -213,7 +219,10 @@ const Header = () => {
         <div className='lg:hidden fixed top-14 left-0 right-0 bg-black text-white p-5'>
           <div className='flex flex-col gap-4'>
             <select
-              onChange={handleSelect}
+              onChange={(e) => {
+                handleSelect(e);
+                setIsMenuOpen(false);
+              }}
               value={selectedLang}
               className='bg-black text-white p-2 border border-gray-400 rounded-lg'
             >
@@ -224,7 +233,10 @@ const Header = () => {
               ))}
             </select>
             <button
-              onClick={handleGpt}
+              onClick={() => {
+                handleGpt();
+                setIsMenuOpen(false);
+              }}
               className='border border-black px-3 h-12 rounded-md bg-red-500 font-semibold text-white'
             >
               {isChatgpt ? "Home" : "ChatGpt"}

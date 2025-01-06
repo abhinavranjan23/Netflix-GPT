@@ -17,7 +17,7 @@ const SecondConatiner = () => {
   const popularTvShow = useSelector((store) => store.tvShow.popularShow);
 
   return (
-    <div className='bg-black w-full  pl-8 sm:pl-14'>
+    <div className='bg-black w-full  pl-2 sm:pl-14'>
       <Section title='Top Movie' data={movie.toprated} />
       <Section title='Trending Movie' data={movie.trending} />
       <Section title='Upcoming Movie' data={movie.upcoming} />

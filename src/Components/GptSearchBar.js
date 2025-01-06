@@ -22,7 +22,7 @@ const GptSearchBar = () => {
   };
 
   const handleGptSearchVal = async () => {
-    const message = `act as a movie recommending system and for the message ${searchRef.current.value} show only top 5 movie names, and the result should be in a single line with comma-separated movie names. The result should be: koi mil gaya, kaho na kaho, om shanti om, krish, jadoo`;
+    const message = `act as a movie recommending system and for the message ${searchRef.current.value} show only top 5 movie names, and the result should be in a single line with comma-separated movie names. The result should be like : koi mil gaya, kaho na kaho, om shanti om, krish, jadoo`;
     console.log(searchRef.current.value);
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
