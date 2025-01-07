@@ -8,8 +8,8 @@ const Section = ({ title, data }) => {
   if (!data || data.length === 0) return null;
 
   return (
-    <div className='flex flex-col gap-3 py-4 relative '>
-      <h2 className='text-white font-semibold text-lg py-3'>{title}</h2>
+    <div className='flex flex-col gap-3 py-2 sm:py-4 relative '>
+      <h2 className='text-white font-semibold text-lg py-1 sm:py-3'>{title}</h2>
       <div
         ref={containerRef}
         className='flex overflow-x-scroll no-scrollbar items-center scroll-smooth'
