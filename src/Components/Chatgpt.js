@@ -6,10 +6,11 @@ import GptSuggestion from "./GptSuggestion";
 const Chatgpt = () => {
   return (
     <div
-      className='min-h-screen bg-repeat bg-top'
+      className='min-h-screen  bg-top'
       style={{
         backgroundImage: `url(${BACKGROUNDIMAGE})`,
         backgroundSize: "auto",
+        backgroundAttachment: "fixed",
       }}
     >
       <GptSearchBar />
