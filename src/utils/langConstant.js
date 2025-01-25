@@ -6,6 +6,14 @@ const lang = {
     signOut: "Sign Out",
     home: "Home",
     chatGpt: "ChatGPT",
+    titles: {
+      topMovie: "Top Movie",
+      trendingMovie: "Trending Movie",
+      upcomingMovie: "Upcoming Movie",
+      popularMovie: "Popular Movie",
+      popularTvShow: "Popular TV Show",
+      nowPlaying: "Now Playing",
+    },
   },
   es: {
     searchPlaceholder: "¿Qué te gustaría ver hoy?",
@@ -14,6 +22,14 @@ const lang = {
     signOut: "Cerrar sesión",
     home: "Inicio",
     chatGpt: "ChatGPT",
+    titles: {
+      topMovie: "Película principal",
+      trendingMovie: "Película de tendencia",
+      upcomingMovie: "Próxima película",
+      popularMovie: "Película popular",
+      popularTvShow: "Programa de TV popular",
+      nowPlaying: "En reproducción",
+    },
   },
   fr: {
     searchPlaceholder: "Que voulez-vous regarder aujourd'hui?",
@@ -22,6 +38,14 @@ const lang = {
     signOut: "Se déconnecter",
     home: "Accueil",
     chatGpt: "ChatGPT",
+    titles: {
+      topMovie: "Film principal",
+      trendingMovie: "Film tendance",
+      upcomingMovie: "Film à venir",
+      popularMovie: "Film populaire",
+      popularTvShow: "Émission télévisée populaire",
+      nowPlaying: "En cours de lecture",
+    },
   },
   de: {
     searchPlaceholder: "Was möchten Sie heute sehen?",
@@ -30,6 +54,14 @@ const lang = {
     signOut: "Abmelden",
     home: "Startseite",
     chatGpt: "ChatGPT",
+    titles: {
+      topMovie: "Top-Film",
+      trendingMovie: "Trendfilm",
+      upcomingMovie: "Kommender Film",
+      popularMovie: "Beliebter Film",
+      popularTvShow: "Beliebte Fernsehsendung",
+      nowPlaying: "Jetzt spielen",
+    },
   },
   zh: {
     searchPlaceholder: "您今天想看什么？",
@@ -38,6 +70,14 @@ const lang = {
     signOut: "退出登录",
     home: "主页",
     chatGpt: "ChatGPT",
+    titles: {
+      topMovie: "热门电影",
+      trendingMovie: "趋势电影",
+      upcomingMovie: "即将上映的电影",
+      popularMovie: "受欢迎的电影",
+      popularTvShow: "热门电视剧",
+      nowPlaying: "正在播放",
+    },
   },
   hi: {
     searchPlaceholder: "आज आप क्या देखना चाहेंगे?",
@@ -46,6 +86,14 @@ const lang = {
     signOut: "साइन आउट",
     home: "होम",
     chatGpt: "ChatGPT",
+    titles: {
+      topMovie: "शीर्ष फिल्म",
+      trendingMovie: "प्रचलित फिल्म",
+      upcomingMovie: "आगामी फिल्म",
+      popularMovie: "लोकप्रिय फिल्म",
+      popularTvShow: "लोकप्रिय टीवी शो",
+      nowPlaying: "अब चल रहा है",
+    },
   },
 };
 

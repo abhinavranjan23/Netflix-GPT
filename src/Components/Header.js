@@ -7,6 +7,7 @@ import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO, SUPPORTED_LANGUAGE } from "../utils/constant";
 import { removeGptMovieResult, updateGpt } from "../utils/chatGptSlice";
 import { updateLangage } from "../utils/langSlice";
+import lang from "../utils/langConstant";
 
 const Header = () => {
   const selectedLang = useSelector((store) => store.language.lang);
@@ -139,7 +140,7 @@ const Header = () => {
                 isClicked ? "scale-90" : "scale-100"
               }`}
             >
-              {isChatgpt ? "Home" : "ChatGpt"}
+              {isChatgpt ? lang[selectedLang].home : lang[selectedLang].chatGpt}
             </button>
           </div>
 
@@ -186,7 +187,7 @@ const Header = () => {
                     d='M16 14v4H8v-4m4 0V6m0 8h-4M3 3h18'
                   />
                 </svg>
-                <span>Account</span>
+                <span>{lang[selectedLang].account}</span>
               </div>
               <div
                 className='flex items-center gap-3 py-2 font-semibold text-white hover:text-gray-400 cursor-pointer'
@@ -207,7 +208,7 @@ const Header = () => {
                     d='M17 16l-4-4m0 0l-4-4m4 4h.01M7 8h10M7 12h10M7 16h10'
                   />
                 </svg>
-                <span>Sign Out</span>
+                <span>{lang[selectedLang].signOut}</span>
               </div>
             </div>
           </div>

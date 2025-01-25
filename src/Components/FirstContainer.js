@@ -4,11 +4,13 @@ import { useNowPlaying } from "../utils/useNowPlaying";
 import VideoTitle from "./VideoTitle";
 import VideoBackground from "./VideoBackground";
 import MovieCard from "./MovieCard";
+import lang from "../utils/langConstant";
 
 const FirstContainer = () => {
   // Fetch now playing data
   useNowPlaying();
   const nowPlayingData = useSelector((store) => store.movies?.nowPlaying);
+  const selectedLang = useSelector((store) => store.language.lang);
   const scrollContainerRef = useRef(null);
 
   if (!nowPlayingData || nowPlayingData.length === 0) {
@@ -30,7 +32,9 @@ const FirstContainer = () => {
         className='flex flex-col pl-2 sm:pl-14 absolute bottom-0 left-0 right-0 gap-y-3 bg-gradient-to-t from-black pb-1'
         style={{ height: "180px", width: "100%" }}
       >
-        <h2 className='text-white font-semibold text-lg'>Now Playing</h2>
+        <h2 className='text-white font-semibold text-lg'>
+          {lang[selectedLang].titles.nowPlaying}
+        </h2>
 
         <div className='relative'>
           <div
