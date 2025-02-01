@@ -17,7 +17,7 @@ const Login = () => {
       </div>
       <div className='relative flex justify-center items-center min-h-screen'>
         <div
-          className='h-auto sm:w-[400px] w-[450px] bg-black bg-opacity-85 mt-16 sm:mt-24 px-8 sm:px-8 py-8 sm:py-5 shadow-lg shadow-stone-700 flex flex-col'
+          className='h-auto sm:w-[400px] w-[340px] bg-black bg-opacity-85 mt-16 sm:mt-24 px-4 sm:px-8 py-8 sm:py-5 shadow-lg shadow-stone-700 flex flex-col'
           onClick={(e) => e.stopPropagation()}
         >
           <span className='font-bold text-3xl sm:text-2xl pb-8 text-white text-center'>

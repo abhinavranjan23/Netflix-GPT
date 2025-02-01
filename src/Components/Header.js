@@ -215,7 +215,7 @@ const Header = () => {
         </div>
       )}
 
-      {/* Updated mobile menu without Sign Out */}
+      {/* Updated mobile menu */}
       {isMenuOpen && (
         <div className='lg:hidden fixed top-14 left-0 right-0 bg-black text-white p-5'>
           <div className='flex flex-col gap-4'>
